@@ -2,20 +2,19 @@ package server
 
 import (
 	"context"
-
 	"pdaniel.com/go/grpc/models"
 	"pdaniel.com/go/grpc/repository"
 	"pdaniel.com/go/grpc/studentpb"
 )
 
 
-type server struct {
+type Server struct {
 	repo repository.Repository
 	studentpb.UnimplementedStudentServiceServer
 }
 
-func NewStudentServer(repo repository.Repository) *server {
-	return &server{
+func NewStudentServer(repo repository.Repository) *Server {
+	return &Server{
 		repo: repo,
 	}
 }
