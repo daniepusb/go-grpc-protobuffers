@@ -22,15 +22,16 @@ go get google.golang.org/grpc
 go get google.golang.org/grpc/codes
 go get google.golang.org/grpc/status
 
-
 protoc --version
 protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative studentpb/student.proto
+protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative testpb/test.proto
 
 cd database
   docker build . -t pdaniel-grpc-db 
-   docker run -p 54321:5432 -e POSTGRES_PASSWORD=postgres pdaniel-grpc-db
+  docker run -p 54321:5432 -e POSTGRES_PASSWORD=postgres pdaniel-grpc-db
 
 ```
 ```bash 
 go run server-student/main.go
 ```
+Then use Postman,GRPC,  URL: localhost:5060, ServerReflectionInfo 
